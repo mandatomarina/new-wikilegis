@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
     'compressor',
     'compressor_toolkit',
     'django_extensions',
@@ -58,6 +57,12 @@ INSTALLED_APPS = [
     'apps.notifications',
     'apps.api',
     'apps.dashboard',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    
 ]
 
 MIDDLEWARE = [
@@ -93,7 +98,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wikilegis.wsgi.application'
+#WSGI_APPLICATION = 'wikilegis.wsgi.application'
 
 
 # Database
@@ -238,6 +243,7 @@ if config('ENABLE_REMOTE_USER', default=0, cast=bool):
 else:
     AUTHENTICATION_BACKENDS = [
         'django.contrib.auth.backends.ModelBackend',
+        'allauth.account.auth_backends.AuthenticationBackend',
     ]
 
 FORCE_SCRIPT_NAME = config('FORCE_SCRIPT_NAME', default='')

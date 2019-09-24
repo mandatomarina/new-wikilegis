@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from apps.api.urls import router
 from apps.participations import views
 from django.conf import settings
@@ -17,6 +18,8 @@ urlpatterns = [
     path('accounts/', include('apps.accounts.urls')),
     path('listarProposicoes/', views.list_propositions),
     path('listarProposicoes/<int:cd_id>', views.proposition_detail),
+    url(r'^accounts/', include('allauth.urls')),
+
 ]
 
 if settings.DEBUG:
