@@ -270,6 +270,9 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+#Django ALLAUTH
+LOGIN_REDIRECT_URL = '/'
+
 ACCOUNT_FORMS = {
 'signup': 'apps.accounts.forms.CustomSignupForm',
 }
