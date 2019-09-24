@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -269,3 +269,7 @@ CONSTANCE_CONFIG = {
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+ACCOUNT_FORMS = {
+'signup': 'apps.accounts.forms.CustomSignupForm',
+}

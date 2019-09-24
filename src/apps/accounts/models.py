@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.conf import settings
+
 from utils.choices import GENDER_CHOICES, UF_CHOICES, PROFILE_TYPE_CHOICES
 
 
@@ -22,6 +23,8 @@ class UserProfile(models.Model):
     birthdate = models.DateField(_('birthdate'), blank=True, null=True)
     avatar = models.CharField(_('avatar'), max_length=200, null=True,
                               blank=True)
+    phone = models.CharField(_('mobile'), blank=True, null=True, max_length=200)
+    elector = models.BooleanField(_('elector'), blank=True, default=0)
 
     class Meta:
         verbose_name = _('profile')
