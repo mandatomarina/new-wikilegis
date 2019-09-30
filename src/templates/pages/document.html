@@ -3,7 +3,10 @@
 {% block title %}
   {{ object.document.title }}
 {% endblock title %}
-
+{% block extracss %}
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
 {% block body_classes %}-white{% endblock %}
 
 {% block metatags %}
