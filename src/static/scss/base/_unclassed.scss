@@ -282,3 +282,46 @@ button {
     display: none !important;
   }
 }
+
+.loginandregister {
+  
+  form input[type=checkbox] {
+    -webkit-appearance:checkbox;
+    -moz-appearance: checkbox;
+    box-shadow: none;
+    width: initial;
+    height:initial;
+  }
+
+  form select {
+    width:initial;
+    height:initial;
+  }
+  form button {
+      background-color: #eee;
+      width:12rem;
+      padding:1rem;
+      margin:1rem auto;
+      cursor: pointer;
+  }
+
+  form button:hover {
+    background-color: #ccc;
+  }
+
+}
+
+.loginandregister .social_providers_list {
+  margin-top:2rem;
+  text-align: center;
+}
+
+.loginandregister .social_providers_list a {
+  border:1px solid black;
+  padding:1rem;
+  background-color:white;
+}
+
+.loginandregister .social_providers_list a i {
+  margin-right:1px;
+}

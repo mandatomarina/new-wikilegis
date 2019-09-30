@@ -1,16 +1,13 @@
-{% extends "account/base.html" %}
+{% extends "structure/base.html" %}
+{% load staticfiles %}
 
-{% load i18n %}
+{% block title %}
+  Cadastre-se
+{% endblock title %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
-{% block head_links %} 
-
-<title>Signup</title>
-
-{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+<main class="projects-list loginandregister">
 
  {% block messages %}
     {% if messages %}
@@ -30,14 +27,13 @@
   {% endblock %}
   
 
-<h3 class="h3" id="head_banner">{% trans "Sign Up" %}</h3>
+<div class="header"><h1>Cadastre-se</h1></div>
 
-<p class="exist_account_info">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="container-fluid text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<p class="exist_account_info">Você já tem uma conta? <a href="{{ login_url }}">Acesse</a>.</p>
+  <form style="margin:0 auto;width:50%" class="document-card" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
 
-  {{ form.as_p }}
+    {{ form.as_p }}
 
   {% if redirect_field_value %}
 
@@ -45,8 +41,8 @@
   
   {% endif %}
   
-  <button class="btn btn-outline-primary btn-lg" type="submit">{% trans "Sign Up" %}</button>
+  <button class="pseudolink" type="submit">Cadastre-se</button>
 </form>
 
-</div>
+</main>
 {% endblock %}

@@ -1,17 +1,16 @@
-{% extends "account/base.html" %}
+{% extends "structure/base.html" %}
+{% load staticfiles %}
 
-{% load i18n %}
-
-{% block head_links %} 
-
-<title>Sign In</title>
-
+{% block title %}
+  Entrar
+{% endblock title %}
+{% block extracss %}
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
-{% block head_title %}{% trans "Sign In" %} {% endblock %}
-
 {% block content %}
-<div class="container-fluid">
+<main class="projects-list loginandregister">
 
  {% block messages %}
     {% if messages %}
@@ -30,9 +29,9 @@
     {% endif %}
   {% endblock %}
 
-<h3 class="h3" id="head_banner">{% trans "Sign In" %}</h3>
+  <div class="header"><h1>Entrar</h1></div>
 
-<form class="container-fluid text-center" id="login_form" method="POST" action="{% url 'account_login' %}">
+<form style="margin:0 auto;width:50%" class="document-card" id="login_form" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   
   {{ form.as_p }}
@@ -43,8 +42,8 @@
   
   {% endif %}
   
-  <button  class="btn btn-outline-primary " type="submit">{% trans "Sign In" %}</button>
-  <a  class="btn btn-outline-dark" href="{% url 'account_reset_password' %}">{% trans "Forgot Password ?" %}</a>  
+  <button type="submit">Entrar</button>
+  <a  class="btn btn-outline-dark" href="{% url 'account_reset_password' %}">Esqueceu a senha?</a>  
 
 </form>
     {% load account socialaccount %}
@@ -53,8 +52,8 @@
     <ul class="social_providers_list">
     {% for provider in socialaccount_providers %}
         <a title="{{provider.name}}" class="btn btn-outline-dark" 
-         href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fa fa-{{provider.name}}" id="social_icon"></i>{{provider.name}}</a>
+         href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fab fa-{{provider.name|lower}}" id="social_icon"></i>{{provider.name}}</a>
     {% endfor %}
     </ul>
-</div>
+  </main>
 {% endblock %}
