@@ -73,6 +73,15 @@
         </a>
       </div>
       {% endif %}
+      {% if request.user.is_authenticated %}
+      <div class="tools">
+        <b><a href="/accounts/logout">Sair</a></b>
+      </div>
+      {% else %}
+      <div class="tools">
+        <b><a href="/accounts/login">Entrar</a></b>
+      </div>      
+      {% endif %}
     </div>
 
     {% include "components/alert-message.html" %}
