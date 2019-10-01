@@ -126,7 +126,7 @@ def excerpt_numbering(excerpt):
                     order=excerpt.order + 1
                 ).count()
                 if prev_excerpt + next_excerpt == 0:
-                    return "%s. " % _("Sole paragraph")
+                    return "%s. " % _("Parágrafo único")
                 else:
                     return "§ %dº " % excerpt.number
             else:
