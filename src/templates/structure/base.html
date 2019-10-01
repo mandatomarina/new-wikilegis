@@ -79,7 +79,7 @@
       </div>
       {% else %}
       <div class="tools">
-        <b><a href="/accounts/login">Entrar</a></b>
+        <b><a href="/accounts/login?next={{request.path}}">Entrar</a></b>
       </div>      
       {% endif %}
     </div>
