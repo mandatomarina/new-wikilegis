@@ -4,10 +4,10 @@
   justify-content: space-between;
 
   box-sizing: border-box;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 0 2rem;
 
   @include bp-smallup {
-    padding: 4rem 8vw;
+    padding: 4rem 8vw 0 8vw;
   }
 
   @include bp-mediumup {
@@ -65,11 +65,11 @@
 
     @include bp-mediumup {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
 
       width: calc(60% - 2rem);
-      height: 120%;
+      height: 100%;
     }
 
     & > img {
