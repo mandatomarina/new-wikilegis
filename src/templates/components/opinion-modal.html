@@ -25,7 +25,7 @@
             <div class="overflow">
               <span class="info-text js-userInfo">
                 <img class="js-userAvatar" src="{{suggestion.author.profile.avatar_url}}">
-                <h3>{{suggestion.author.first_name}} opinou:</h3>
+                <h3>{{suggestion.author.profile.full_name}} opinou:</h3>
               </span>
                             
               <p class="suggestion js-suggestion">{{suggestion.content}}</p>
@@ -50,7 +50,7 @@
         {% if request.user.is_authenticated %}
         <button class="disagree js-opinionButton" data-opinion="reject" aria-label="Discordo"></button>
         <button class="indifferent js-opinionButton" data-opinion="neutral" aria-label="Indiferente"></button>
-        <button class="agree js-opinionButton" data-opinion="approve" aria-label="Concordo"></button>
+        <button class="agreebtn agree js-opinionButton" data-opinion="approve" aria-label="Concordo"></button>
         {% else %}
           <h3 class="notice js-loginNotice"><a class="js-loginButton" href="/accounts/login/?next={{request.path}}">Faça login</a> para poder avaliar esta opinião</h3>
         {% endif %}
