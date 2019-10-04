@@ -273,6 +273,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 #Django ALLAUTH
 LOGIN_REDIRECT_URL = '/'
 
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+
 ACCOUNT_FORMS = {
 'signup': 'apps.accounts.forms.CustomSignupForm',
 }

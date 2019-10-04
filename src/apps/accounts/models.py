@@ -14,6 +14,7 @@ class UserProfile(models.Model):
     profile_type = models.CharField(_('profile type'), max_length=200,
                                     choices=PROFILE_TYPE_CHOICES,
                                     default='defult')
+    full_name = models.CharField(max_length=200, verbose_name="Nome Completo", blank=True, null=True)
     gender = models.CharField(_('gender'), max_length=200,
                               choices=GENDER_CHOICES, blank=True, null=True)
     uf = models.CharField(_('uf'), max_length=2, choices=UF_CHOICES, null=True,
