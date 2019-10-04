@@ -109,6 +109,8 @@
       {% block page_js %}
       {% endblock page_js %}
     {% endcompress %}
-
+    {% block ga %}
+      {% include "components/ga.html" %}
+    {% endblock ga %}
   </body>
 </html>
