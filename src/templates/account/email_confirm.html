@@ -1,4 +1,4 @@
-{% extends "account/base.html" %}
+{% extends "structure/base.html" %}
 
 {% load i18n %}
 {% load account %}
@@ -6,6 +6,7 @@
 
 
 {% block content %}
+<main class="projects-list loginandregister">
 
 <h3 class="h3" id="head_banner">{% trans "Confirm E-mail Address" %}</h3>
 
@@ -30,5 +31,5 @@
 	</script>
 	
 {% endif %}
-
+</main>
 {% endblock %}

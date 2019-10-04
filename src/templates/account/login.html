@@ -43,10 +43,10 @@
   {% endif %}
   
   <button type="submit">Entrar</button>
-  <a  class="btn btn-outline-dark" href="{% url 'account_reset_password' %}">Esqueceu a senha?</a>  
+  <a href="{% url 'account_reset_password' %}">Esqueceu a senha?</a> <a href="{% url 'account_signup' %}">Cadastre-se</a>
 
 </form>
-    {% load account socialaccount %}
+    <!-- {% load account socialaccount %}
 
     {% get_providers as socialaccount_providers %}
     <ul class="social_providers_list">
@@ -55,5 +55,6 @@
          href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fab fa-{{provider.name|lower}}" id="social_icon"></i>{{provider.name}}</a>
     {% endfor %}
     </ul>
+  -->
   </main>
 {% endblock %}
