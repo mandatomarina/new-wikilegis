@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'django_js_reverse',
-    'django-import-export',
+    'import_export',
     'constance',
     'constance.backends.database',
 
