@@ -3,6 +3,9 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 
 from .models import UserProfile, ThematicGroup
 
@@ -32,14 +35,21 @@ class ProfileInline(admin.StackedInline):
     raw_id_fields = ('themes',)
 
 
+class UserResource(resources.ModelResource):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
 @admin.register(User)
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin, ImportExportModelAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
     add_fieldsets = ((None, {'fields': ('username', 'email',
                                         'password1', 'password2'),
                              'classes': ('wide',)}),)
     inlines = (ProfileInline, )
+    resource_class = UserResource
+
 
     def get_inline_instances(self, request, obj=None):
         if not obj:
