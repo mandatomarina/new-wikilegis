@@ -82,7 +82,7 @@ class DocumentSerializer(serializers.ModelSerializer):
     owner = UserSerializer()
     document_type = DocumentTypeSerializer()
     themes = ThemeSerializer(many=True)
-    pub_excerpts = serializers.SerializerMethodField('get_pub_excerpts')
+    pub_excerpts = serializers.SerializerMethodField()
 
     class Meta:
         model = Document
@@ -108,10 +108,6 @@ class ExcerptSerializer(serializers.ModelSerializer):
         read_only=True,
         view_name='document-detail'
     )
-    parent = serializers.HyperlinkedRelatedField(
-        read_only=True,
-        view_name='excerpt-detail'
-    )
     suggestions = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
@@ -122,7 +118,7 @@ class ExcerptSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Excerpt
-        fields = ('id', 'document', 'parent', 'order', 'excerpt_type',
+        fields = ('id', 'document', 'order', 'excerpt_type',
                   'number', 'content', 'suggestions')
 
 

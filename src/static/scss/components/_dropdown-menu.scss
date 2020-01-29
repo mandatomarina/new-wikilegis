@@ -397,6 +397,14 @@
     color: $color-brand;
   }
 
+  & > .list a > .info > .item.-red {
+    color: $color-red;
+  }
+
+  & > .list a > .info > .item.-orange {
+    color: $color-orange;
+  }
+
   & > .list > hr {
     margin: .5rem 0;
 

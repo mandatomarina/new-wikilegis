@@ -226,11 +226,11 @@ var events = {
   closeInfoMessage: $.Topic('closeInfoMessage'),
 
   // Triggered when user click on send button
-  // Params: documentId, closingDate, congressmanId, versionId
+  // Params: documentId, closingDate, congressmanId, linkVideo, versionId
   sendPublicForm: $.Topic('sendPublicForm'),
 
   // Triggered when user click on send button
-  // Params: groupId, closingDate, congressmanId
+  // Params: groupId, closingDate, linkVideo, congressmanId
   sendUpdatePublicForm: $.Topic('sendUpdatePublicForm'),
 
   // Triggered when users want to save the document
@@ -281,5 +281,30 @@ var events = {
   highlightExcerpt: $.Topic('highlightExcerpt'),
 
   // Triggered when the document owner starts typing a document for the very first time
-  showModifyExcerptTip: $.Topic('showModifyExcerptTip')
+  showModifyExcerptTip: $.Topic('showModifyExcerptTip'),
+
+  // Triggered when user click on openFeedbackFormModal
+  openFeedbackFormModal: $.Topic('openFeedbackFormModal'),
+
+  // Triggered when user click on closeFeedbackFormModal
+  closeFeedbackFormModal: $.Topic('closeFeedbackFormModal'),
+
+  // Triggered when user click on openFeedbackInfoModal
+  openFeedbackInfoModal: $.Topic('openFeedbackInfoModal'),
+
+  // Triggered when user click on closeFeedbackInfoModal
+  closeFeedbackInfoModal: $.Topic('closeFeedbackInfoModal'),
+
+  // Triggered when user click on openFeedbackWaitingModal
+  openFeedbackWaitingModal: $.Topic('openFeedbackWaitingModal'),
+
+  // Triggered when user click on closeFeedbackWaitingModal
+  closeFeedbackWaitingModal: $.Topic('closeFeedbackWaitingModal'),
+
+  // Triggered when user click on send button
+  // Params: groupId, youtubeId, versionId
+  sendFeedbackForm: $.Topic('sendFeedbackForm'),
+
+  // Switches texts between their original version, the diff version and final version 
+  switchTexts: $.Topic('switchTexts')
 };

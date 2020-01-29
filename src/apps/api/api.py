@@ -5,6 +5,7 @@ from apps.api import serializers
 from apps.projects.models import Theme, DocumentType, Document, Excerpt
 from apps.participations.models import InvitedGroup, Suggestion, OpinionVote
 from apps.accounts.models import ThematicGroup
+from django.contrib.sites.models import Site
 
 DATE_LOOKUPS = ['lt', 'lte', 'gt', 'gte']
 
@@ -36,6 +37,12 @@ class UserViewSet(viewsets.ModelViewSet):
     search_fields = ('username', 'first_name', 'last_name')
     ordering_fields = '__all__'
 
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
+
 
 class ThemeFilter(FilterSet):
     class Meta:
@@ -60,6 +67,12 @@ class ThemeViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = '__all__'
     ordering = ('name',)
 
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
+
 
 class DocumentTypeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = DocumentType.objects.all()
@@ -72,6 +85,12 @@ class DocumentTypeViewSet(viewsets.ReadOnlyModelViewSet):
     filter_fields = ('id', 'title', 'initials')
     search_fields = ('title', 'initials')
     ordering_fields = '__all__'
+
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
 
 
 class DocumentViewSet(viewsets.ReadOnlyModelViewSet):
@@ -89,6 +108,12 @@ class DocumentViewSet(viewsets.ReadOnlyModelViewSet):
                      'document_type__title', 'document_type__initials')
     ordering_fields = '__all__'
 
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
+
 
 class ExcerptViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Excerpt.objects.all()
@@ -98,9 +123,15 @@ class ExcerptViewSet(viewsets.ReadOnlyModelViewSet):
         filters.SearchFilter,
         filters.OrderingFilter
     )
-    filter_fields = ('id', 'document__id', 'parent__id', 'excerpt_type')
+    filter_fields = ('id', 'document__id', 'excerpt_type')
     search_fields = ('excerpt_type', 'number', 'content')
     ordering_fields = '__all__'
+
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
 
 
 class InvitedGroupFilter(FilterSet):
@@ -118,7 +149,8 @@ class InvitedGroupFilter(FilterSet):
 
 class InvitedGroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = InvitedGroup.objects.filter(
-        public_participation=True, group_status='in_progress')
+        public_participation=True,
+        group_status='in_progress').order_by('-closing_date')
     serializer_class = serializers.InvitedGroupSerializer
     filter_backends = (
         django_filters.DjangoFilterBackend,
@@ -128,6 +160,12 @@ class InvitedGroupViewSet(viewsets.ReadOnlyModelViewSet):
     filter_class = InvitedGroupFilter
     search_fields = ('document__title', 'document__description')
     ordering_fields = '__all__'
+
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
 
 
 class SuggestionFilter(FilterSet):
@@ -154,6 +192,12 @@ class SuggestionViewSet(viewsets.ReadOnlyModelViewSet):
     search_fields = ('content',)
     ordering_fields = '__all__'
 
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
+
 
 class OpinionVoteFilter(FilterSet):
     class Meta:
@@ -179,6 +223,12 @@ class OpinionVoteViewSet(viewsets.ReadOnlyModelViewSet):
     filter_class = OpinionVoteFilter
     search_fields = ('content',)
     ordering_fields = '__all__'
+
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}
 
 
 class ThematicGroupFilter(FilterSet):
@@ -207,3 +257,9 @@ class ThematicGroupViewSet(viewsets.ReadOnlyModelViewSet):
             return self.request.user.owner_groups.all()
         else:
             return ThematicGroup.objects.none()
+
+    def get_serializer_context(self):
+        current_site = Site.objects.get_current()
+        current_site.domain
+        self.request.META['HTTP_HOST'] = current_site.domain
+        return {'request': self.request}

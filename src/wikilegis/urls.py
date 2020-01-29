@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from apps.api.urls import router
+from apps.api.urls import router, api_root
 from apps.participations import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -13,13 +13,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('notifications/', include('apps.notifications.urls')),
     path('p/', include('apps.projects.urls')),
-    path('api/v1/', include(router.urls)),
     path('participation/', include('apps.participations.urls')),
     path('accounts/', include('apps.accounts.urls')),
     path('listarProposicoes/', views.list_propositions),
     path('listarProposicoes/<int:cd_id>', views.proposition_detail),
     url(r'^accounts/', include('allauth.urls')),
 
+]
+
+urlpatterns += router.urls
+urlpatterns += [
+    path('api/v1/', api_root),
 ]
 
 if settings.DEBUG:
