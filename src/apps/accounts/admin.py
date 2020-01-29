@@ -38,7 +38,7 @@ class ProfileInline(admin.StackedInline):
 class UserResource(resources.ModelResource):
     class Meta:
         model = UserProfile
-        fields = ('first_name', 'last_name', 'email')
+        fields = ('user__email', 'full_name', 'gender', 'elector', 'uf', 'phone')
 
 @admin.register(UserProfile)
 class CustomUserProfile(ImportExportModelAdmin):
