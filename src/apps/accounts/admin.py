@@ -40,6 +40,7 @@ class UserResource(resources.ModelResource):
         model = UserProfile
         fields = ('user__email', 'full_name', 'gender', 'elector', 'uf', 'phone')
 
+
 @admin.register(UserProfile)
 class CustomUserProfile(ImportExportModelAdmin):
     resource_class = UserResource
