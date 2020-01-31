@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'apps.notifications',
     'apps.api',
     'apps.dashboard',
+    'apps.sugestoes',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
