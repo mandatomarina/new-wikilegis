@@ -1,0 +1,23 @@
+#sugestao {
+    flex-wrap: wrap;
+}
+#sugestao .break {
+    flex-basis: 100%;
+    height:0;
+}
+
+#sugestao .head {
+}
+
+#sugestao .form {
+    flex:1;
+}
+
+#sugestao .form form {
+    width:70%;
+    margin:0 auto;
+}
+#sugestao input[type='checkbox'] {
+    -webkit-appearance: checkbox;
+    box-shadow: none;
+}

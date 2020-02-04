@@ -195,6 +195,10 @@ textarea {
   resize: none;
 }
 
+input, select {
+  height: 3.25rem;
+}
+
 input,
 textarea,
 select {
@@ -202,7 +206,6 @@ select {
 
   box-sizing: border-box;
   width: 100%;
-  height: 3.25rem;
   padding: .875rem;
 
   color: $color-deep-gray;

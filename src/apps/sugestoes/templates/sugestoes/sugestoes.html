@@ -1,0 +1,48 @@
+{% extends "structure/base.html" %}
+{% load static %}
+{% block title %}
+  Sugestão de Projeto de Lei
+{% endblock title %}
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'sugestoes/style.css' %}">
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block body_classes %}-white{% endblock %}
+
+{% block metatags %}
+<meta name="description" content="Apresente aqui sua sugestão de projeto de lei.">
+<meta property="og:title" content="Sugestão de Projeto de Lei">
+<meta property="og:site_name" content="Wikilegis">
+<meta property="og:description" content="Apresente aqui sua sugestão de projeto de lei.">
+<meta property="og:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="300">
+<meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="twitter:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+{% endblock metatags %}
+
+{% block content %}
+
+<main id="sugestao" class="document-body js-documentBody">
+
+    <div class="head">
+      <h1>Sugestão de Projeto de Lei</h1>
+      <p>Sugira aqui seu projeto de lei. Antes de mais nada consulte aqui o nosso <a href="#">manual de processo legislativo</a> para entender 
+        o que é uma sugestão legislativa valida.</p>
+    </div>
+    <div class="break"></div>
+    <div class="form">
+      <form method="post">{% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn" type="submit" value="Enviar">
+      </form>
+  </div>
+</main>
+
+{% endblock content %}
+
+{% block page_js %}
+{% endblock page_js %}
