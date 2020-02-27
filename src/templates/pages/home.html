@@ -242,10 +242,13 @@
               <p class="closed">Encerrado em {{closed_group.closing_date|date:"d/m/Y"}}</p>
               <div class="feedback-status">
                 <img src="{% static 'img/hourglass.svg' %}" alt="">
-                {% if closed_group.group_status == "ready" %}                
+                {% if closed_group.group_status == "ready" %}                 
                 
                 <p class="-onhold">Protocolado: {{closed_group.document.document_type}} {{closed_group.document.number}}/{{closed_group.document.year}}</p>
+                {% else %}
+                <p class="-onhold">Aguardando análise técnica</p>
                 {% endif %}
+
                 </div>
 
             </div>
