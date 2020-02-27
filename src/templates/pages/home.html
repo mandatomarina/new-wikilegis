@@ -216,8 +216,11 @@
   {% if closed_public_groups %}
 
     {% for closed_group in closed_public_groups %}
-      <a href="{% url 'project' closed_group.id closed_group.document.slug %}" class="document-card {% if closed_group.closing_date|is_open %}-public{% else %}-closed{% endif %}">
-
+      {% if closed_group.group_status == "ready" %}
+        <a href="{{ closed_group.document.infos.project_url }}" target="_blank" class="document-card {% if closed_group.closing_date|is_open %}-public{% else %}-closed{% endif %}">
+      {% else %}
+        <a href="{% url 'project' closed_group.id closed_group.document.slug %}" class="document-card {% if closed_group.closing_date|is_open %}-public{% else %}-closed{% endif %}">
+      {% endif %}
         <ul class="tags">
           {% for theme in closed_group.document.themes.all %}
           <li class="app-tag -theme">
@@ -239,12 +242,19 @@
               <p class="closed">Encerrado em {{closed_group.closing_date|date:"d/m/Y"}}</p>
               <div class="feedback-status">
                 <img src="{% static 'img/hourglass.svg' %}" alt="">
-                <p class="-onhold"><span>Aguardando resposta</span>do deputado há
-                  {{ closed_group.closing_date |absolute_days_since }} dias</p>
-              </div>
+                {% if closed_group.group_status == "ready" %}                
+                
+                <p class="-onhold">Protocolado: {{closed_group.document.document_type}} {{closed_group.document.number}}/{{closed_group.document.year}}</p>
+                {% endif %}
+                </div>
+
             </div>
 
-          <span class="pseudolink">Acessar</span>
+            {% if closed_group.group_status == "ready" %}                
+            <span class="pseudolink" style="flex:1">Acompanhe a tramitação</span>
+            {% else %}
+            <span class="pseudolink">Acessar</span>
+            {% endif %}
         </div>
       </a>
     {% endfor %}

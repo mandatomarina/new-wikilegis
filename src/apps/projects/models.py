@@ -145,6 +145,7 @@ class DocumentInfo(models.Model):
     keywords = models.TextField(_('keywords'), null=True, blank=True)
     authors = models.ManyToManyField('projects.DocumentAuthor',
                                      related_name='documents', blank=True)
+    project_url = models.URLField(_('project url'), null=True, blank=True)
 
     class Meta:
         verbose_name = _("Document Information")

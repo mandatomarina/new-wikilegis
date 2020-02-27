@@ -179,7 +179,7 @@ class InvitedGroupListView(ListView):
         ).order_by('closing_date')
         context['closed_public_groups'] = queryset.filter(
             public_participation=True,
-            group_status__in=['in_progress', 'waiting_feedback'],
+            group_status__in=['in_progress', 'waiting_feedback', 'ready'],
             closing_date__lt=date.today()
         ).order_by('-closing_date')
 
