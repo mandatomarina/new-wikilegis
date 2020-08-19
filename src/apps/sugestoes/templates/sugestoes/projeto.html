@@ -54,8 +54,21 @@
         <p>{{projeto.justificativa}}</p>
     </div>
 
+    <div class='excerpt-wrapper apoiadores'>
+        <b>Apoiadores:</b>
+        {% for apoiador in projeto.apoiador.all %}
+        <p>{{apoiador.profile.full_name}}</p>
+        {% endfor %}
+    </div>
+    <div style="padding-top:2em;">
+    {% if user in projeto.apoiador.all %}
+    <a href="{% url 'vote' projeto_id=projeto.id vote='down' %}" class="app-button -green">Remover apoio a esse projeto</a>
+    {% else %}
+    <a href="{% url 'vote' projeto_id=projeto.id vote='up' %}" class="app-button -green">Apoiar esse projeto</a>
+    {% endif %}
+    </div>
+
     </article>
-  <div class="info-button js-infoButton"></div>
 </main>
 
 {% endblock content %}

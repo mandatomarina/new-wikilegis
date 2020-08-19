@@ -50,7 +50,7 @@
 
               
         {% for projeto in projetos %}
-          <a href="#" class="document-card -public">
+          <a href="{% url 'projeto' projeto.id %}" class="document-card -public">
                 <ul class="tags">
                         <!-- <li class="app-tag -private">
                           <img src="{% static 'img/padlock.svg' %}" alt="">

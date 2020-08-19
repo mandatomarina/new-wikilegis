@@ -1,5 +1,5 @@
 from django.db import models
-from ..accounts.models import UserProfile
+from django.contrib.auth.models import User
 # Create your models here.
 
 DEFAULT_STATUS = 1
@@ -24,7 +24,7 @@ class Projeto(models.Model):
     justificativa = models.CharField('Justificativa', max_length=280)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, default=DEFAULT_STATUS)
     concordo = models.BooleanField(default=False)
-    apoiador = models.ManyToManyField(UserProfile)
+    apoiador = models.ManyToManyField(User)
 
     def __str__(self):
         return(self.ementa)

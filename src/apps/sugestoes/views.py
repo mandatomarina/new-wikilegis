@@ -29,11 +29,18 @@ class ProjetoView(View):
     def get(self, request, *args, **kwargs):
         
         projeto_id = kwargs['projeto_id']
-        print(projeto_id)
         projeto = Projeto.objects.get(id=projeto_id)
         context = { 'projeto' : projeto }
         return render(request, 'sugestoes/projeto.html', context)
     
 class ProjetoVote(View):
     def get(self, request, *args, **kwargs):
-        return None
+        projeto_id = kwargs['projeto_id']
+        vote = kwargs['vote']
+        projeto = Projeto.objects.get(id=projeto_id)
+        user = request.user
+        if vote == 'up':
+            projeto.apoiador.add(user)
+        elif vote == 'down':
+            projeto.apoiador.remove(user)
+        return render(request, 'sugestoes/obrigado.html')
