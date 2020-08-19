@@ -17,6 +17,7 @@ class Status(models.Model):
         return(self.nome)
 
 class Projeto(models.Model):
+    titulo = models.CharField('Titulo', max_length=140)
     tema = models.ForeignKey(Tema, on_delete=models.CASCADE)
     ementa = models.CharField('Ementa', max_length=280)
     descritivo = models.TextField('Descritivo', max_length=500)

@@ -1,0 +1,33 @@
+        <div class="howtowrapper">
+            <div class="howto-button -sidebar js-howtoButton" aria-label="Como participar"></div>
+        </div>
+      
+     {% if projeto.autor %}
+      <div class="item">
+        <span class="title">Autor</span>
+          <div class="autor">
+            <div class="info">
+              <span class="text -name">{{ projeto.autor }}</span>
+              </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if projeto.tema %}
+      <div class="item">
+        <span class="title">Temas:</span>
+        <ul class="themes">
+            <li class="theme-tag">
+              <span class="dot" style="background-color:#f00;"></span>
+              {{ projeto.tema }}
+            </li>
+        </ul>
+      </div>
+      {% endif %}
+      <div class="item">
+        <div class="social">
+          <a class="facebook" data-social="facebook" title="Facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ protocol }}{{ site_url }}{{request.path}}" target="_blank" rel="noopener"></a>
+          <a class="twitter" data-social="twitter" title="Twitter" href="http://twitter.com/share?text=Eu já estou participando, participe você também!&url={{ protocol }}{{ site_url }}{{request.path}}" target="_blank" rel="noopener"></a>
+          <a class="whatsapp" data-social="whatsapp" title="Whatsapp" href="https://api.whatsapp.com/send?text=Eu já estou participando, participe você também!%0A{{ protocol }}{{ site_url }}{{request.path}}%20" target="_blank" rel="noopener"></a>
+        </div>
+      </div>

@@ -1,0 +1,64 @@
+{% extends "structure/base.html" %}
+{% load static projects_tags participations_tags %}
+{% block title %}
+  {{ projeto.titulo }}
+{% endblock title %}
+
+{% block body_classes %}-white{% endblock %}
+
+{% block metatags %}
+<meta name="description" content="{{ object.document.description }}">
+<meta property="og:title" content="{{ object.document.title }}">
+<meta property="og:site_name" content="Wikilegis">
+<meta property="og:description" content="{{ object.document.description }}">
+<meta property="og:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="300">
+<meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="twitter:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+{% endblock metatags %}
+
+{% block content %}
+
+{% if request.user.profile.profile_type != 'owner' %}
+<div class="howto-button -navbar js-howtoButton" aria-label="Como participar?"></div>
+{% endif %}
+<main class="document-body js-documentBody">
+  <div class="wrapper">
+    <div class="invisible"></div>
+    <aside class="info-bar">
+      {% include "sugestoes/projeto_info.html" %}
+    </aside>
+  </div>
+  <article>
+    <header class="js-documentHeader">
+      <div class="info">
+        <div class="group">
+          <span>Sugestão de {{projeto.autor}}</span>
+        </div>
+      </div>
+      <h1>{{ projeto.titulo }}</h1>
+      <p class="description">{{ projeto.ementa }}</p>
+      <hr>
+    </header>
+    
+    <div class='excerpt-wrapper descritivo'>
+       <b>Descritivo:</b>
+       <p>{{projeto.descritivo}}</p>
+    </div>
+
+    <div class='excerpt-wrapper justificativa'>
+        <b>Justificativa:</b>
+        <p>{{projeto.justificativa}}</p>
+    </div>
+
+    </article>
+  <div class="info-button js-infoButton"></div>
+</main>
+
+{% endblock content %}
+
+{% block page_js %}
+{% endblock page_js %}

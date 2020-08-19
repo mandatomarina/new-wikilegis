@@ -1,0 +1,84 @@
+{% extends "structure/base.html" %}
+{% load static %}
+{% block title %}
+  {{ object.document.title }}
+{% endblock title %}
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'sugestoes/style.css' %}">
+
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block body_classes %}-white{% endblock %}
+
+{% block metatags %}
+<meta name="description" content="{{ object.document.description }}">
+<meta property="og:title" content="{{ object.document.title }}">
+<meta property="og:site_name" content="Wikilegis">
+<meta property="og:description" content="{{ object.document.description }}">
+<meta property="og:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="300">
+<meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="twitter:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+{% endblock metatags %}
+
+{% block content %}
+
+<main class="projects-list">
+        <br />    
+    <div class="header" style="display:block;">
+            
+                <h1>Sugestões legislativas</h1>
+                <p>Lorem ipsum sic dolor</p>          
+    </div>
+    <div class="list">
+
+        <a href="{% url 'projeto-create' %}" class="document-card -public">
+                
+            <h3 class="js-title">Sugira um novo projeto</h3>
+            <p class="js-description">
+                Tem uma ideia para um projeto de lei?
+            </p>
+            <center><img src="{% static 'sugestoes/img/plus.png' %}" style="width:30%;opacity:0.5;padding-top:3em;" /></center>
+            <div class="footer">
+            
+            </div>
+            </a>
+
+              
+        {% for projeto in projetos %}
+          <a href="#" class="document-card -public">
+                <ul class="tags">
+                        <!-- <li class="app-tag -private">
+                          <img src="{% static 'img/padlock.svg' %}" alt="">
+                          <span class="label">Aguardando análise</span>
+                        </li> -->
+                        <li class="app-tag -theme">
+                          <span class="dot" style="background-color:#f00;"></span>
+                          <span class="label">{{ projeto.tema }}</span>
+                        </li>
+                    </ul>
+      
+            <h3 class="js-title">{{ projeto.ementa }}</h3>
+            <p class="js-description">
+              {{ projeto.descritivo }}
+            </p>
+      
+            <div class="footer">
+              <div class="status">
+                <p class="closed">Aguardando análise</p>
+              </div>
+              <span class="pseudolink">{{projeto.apoios}} apoios</span>
+            </div>
+          </a>
+          {% endfor %}
+
+</main>
+
+{% endblock content %}
+
+{% block page_js %}
+{% endblock page_js %}
