@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import Count
 from django.views import View
 from django.views.generic.edit import CreateView, FormView
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Projeto
 from .forms import ProjetoForm
@@ -17,6 +18,14 @@ class ProjetoCreateView(CreateView):
     form_class = ProjetoForm
 
     success_url = reverse_lazy('obrigado')
+
+    def form_valid(self, form):
+        self.object = form.save()
+        # do something with self.object
+        self.object.autor = self.request.user
+        self.object.apoiador.add(self.request.user)
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 class ProjetoList(View):
     def get(self, request, *args, **kwargs):

@@ -4,7 +4,7 @@ from .models import Projeto
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        fields = ['tema', 'ementa', 'descritivo', 'justificativa', 'concordo']
+        fields = ['titulo', 'tema', 'ementa', 'descritivo', 'justificativa', 'concordo']
         labels = {"concordo" : "Li o manual legislativo antes de submeter esse projeto." }
 
     

@@ -1,7 +1,7 @@
 {% extends "structure/base.html" %}
 {% load static projects_tags participations_tags %}
 {% block title %}
-  {{ projeto.titulo }}
+  Sugestão Legislativa - {{ projeto.titulo }}
 {% endblock title %}
 
 {% block body_classes %}-white{% endblock %}
@@ -36,7 +36,7 @@
     <header class="js-documentHeader">
       <div class="info">
         <div class="group">
-          <span>Sugestão de {{projeto.autor}}</span>
+          <span>Sugestão Legislativa</span>
         </div>
       </div>
       <h1>{{ projeto.titulo }}</h1>
