@@ -1,0 +1,43 @@
+{% extends "structure/base.html" %}
+{% load static %}
+{% block title %}
+  {{ object.document.title }}
+{% endblock title %}
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'sugestoes/style.css' %}">
+
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block body_classes %}-white{% endblock %}
+
+{% block metatags %}
+<meta name="description" content="{{ object.document.description }}">
+<meta property="og:title" content="{{ object.document.title }}">
+<meta property="og:site_name" content="Wikilegis">
+<meta property="og:description" content="{{ object.document.description }}">
+<meta property="og:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="300">
+<meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="twitter:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+{% endblock metatags %}
+
+{% block content %}
+
+<main class="document-body js-documentBody">
+<div style="margin:0 auto">
+    <form method="post">{% csrf_token %}
+        <p>Tem certeza que quer remover "{{ object }}"?</p><br />
+        <input type="submit" value="Confirmar">
+    </form>
+</div>
+</main>
+
+{% endblock content %}
+
+{% block page_js %}
+{% endblock page_js %}
+

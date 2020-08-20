@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Count
 from django.views import View
-from django.views.generic.edit import CreateView, FormView
+from django.views.generic.edit import CreateView, FormView, DeleteView
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Projeto
 from .forms import ProjetoForm
 
@@ -25,7 +25,7 @@ class ProjetoCreateView(CreateView):
         self.object.autor = self.request.user
         self.object.apoiador.add(self.request.user)
         self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
+        return redirect('projeto', projeto_id=self.object.id)
 
 class ProjetoList(View):
     def get(self, request, *args, **kwargs):
@@ -52,4 +52,9 @@ class ProjetoVote(View):
             projeto.apoiador.add(user)
         elif vote == 'down':
             projeto.apoiador.remove(user)
-        return render(request, 'sugestoes/obrigado.html')
+        return redirect('projeto', projeto_id=projeto_id)
+
+class ProjetoDelete(DeleteView):
+    template_name = "sugestoes/remover.html"
+    model = Projeto
+    success_url = reverse_lazy('lista')    

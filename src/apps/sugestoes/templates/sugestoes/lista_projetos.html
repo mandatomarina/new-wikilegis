@@ -32,11 +32,15 @@
     <div class="header" style="display:block;">
             
                 <h1>Sugestões legislativas</h1>
-                <p>Lorem ipsum sic dolor</p>          
+                <p>Proponha ou apoie sugestões legislativas.</p>          
     </div>
     <div class="list">
-
+        {% if user.is_authenticated %}
         <a href="{% url 'projeto-create' %}" class="document-card -public">
+          {% else %}
+        <a href="/accounts/login/?next={% url 'projeto-create' %}" class="document-card -public">
+          {% endif %}
+          
                 
             <h3 class="js-title">Sugira um novo projeto</h3>
             <p class="js-description">
@@ -69,7 +73,7 @@
       
             <div class="footer">
               <div class="status">
-                <p class="closed">Aguardando análise</p>
+                <p class="closed">{{projeto.status}}</p>
               </div>
               <span class="pseudolink">{{projeto.apoios}} apoios</span>
             </div>

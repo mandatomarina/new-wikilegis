@@ -64,7 +64,14 @@
     {% if user in projeto.apoiador.all %}
     <a href="{% url 'vote' projeto_id=projeto.id vote='down' %}" class="app-button -green">Remover apoio a esse projeto</a>
     {% else %}
-    <a href="{% url 'vote' projeto_id=projeto.id vote='up' %}" class="app-button -green">Apoiar esse projeto</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'vote' projeto_id=projeto.id vote='up' %}" class="app-button -green">Apoiar esse projeto</a>
+      {% else %}
+      <a href="/accounts/login/?next={{request.path}}" class="app-button -green">Faça login para apoiar</a>
+      {% endif %}
+    {% endif %}
+    {% if user is projeto.autor or user.is_superuser%}
+    <a href="{% url 'projeto-delete' pk=projeto.id %}" class="app-button -green">Apagar projeto</a>
     {% endif %}
     </div>
 
