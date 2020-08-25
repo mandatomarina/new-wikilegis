@@ -19,7 +19,7 @@ class Emenda(models.Model):
     ementa = models.TextField()
     autor = models.CharField(max_length=140)
     link = models.URLField()
-    arquivo = models.FileField(upload_to='mutirao/emendas/')
+    arquivo = models.FileField(upload_to='mutirao/emendas/', null=True)
 
 
     def __str__(self):

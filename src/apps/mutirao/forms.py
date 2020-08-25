@@ -9,7 +9,7 @@ TRUE_FALSE_CHOICES = (
 class MutiraoForm(forms.ModelForm):
     apoiar = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, label="Devemos apoiar essa emenda?", 
         initial=False, widget=forms.Select(), required=True)
-    justificativa = forms.CharField(required=False, widget=forms.Textarea)
+    justificativa = forms.CharField(required=False, label="Justificativa (300 caracteres):", widget=forms.Textarea(attrs={'autofocus': 'autofocus', 'maxlength' : 300}))
     emenda_id = forms.IntegerField(required=False, widget=forms.HiddenInput())
     
     class Meta:

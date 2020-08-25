@@ -27,17 +27,26 @@
 
 {% block content %}
 
-<main id="emenda" class="document-body js-documentBody">
+<div class="mutirao-header">
+        <h1>Mutirão Legislativo</h1>
+        <p>Nos ajude a analisar e avaliar as emendas de projetos legislativos.</p>          
+</div>
 
+<main id="emenda" class="document-body js-documentBody">
+            
     <header class="js-documentHeader">
         <div class="info">
           <div class="group">
-            <span><a href="{{emenda.pl.arquivo.url}}">{{emenda.pl.tipo}} {{emenda.pl.numero}}/{{emenda.pl.ano}}</a></span> (faltam <span>{{count}}</span> emendas)
+            <p>{{emenda.pl.tipo}} {{emenda.pl.numero}}/{{emenda.pl.ano}} <a href="{{emenda.pl.arquivo.url}}">⬇</a></p>
+            <div class="small">{{emendas_total}} emendas protocoladas.</div>
+            <div class="small">{{emendas_analisadas}} emendas já analisadas.</div>
+            <hr>
+
           </div>
-          <p>Emenda {{emenda.numero}}/{{emenda.ano}}</p>
+          <p>Emenda {{emenda.numero}}/{{emenda.ano}} <a href="{{emenda.link}}">⬇</a></p>
+          <div class="small">{{emenda.autor}}</div>
           <p class="description">{{ emenda.ementa }}</p>
         </div>
-        <hr>
         <div class="form">
                 <form method="post">
                     {% csrf_token %}
