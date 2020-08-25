@@ -1,0 +1,64 @@
+{% extends "structure/base.html" %}
+{% load static %}
+{% block title %}
+  Emenda {{emenda}}
+{% endblock title %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'mutirao/style.css' %}">
+<script src="https://kit.fontawesome.com/a6881808f6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block body_classes %}-white{% endblock %}
+
+{% block metatags %}
+<meta name="description" content="{{emenda}}">
+<meta property="og:title" content="Mutirão de Emendas">
+<meta property="og:site_name" content="Wikilegis">
+<meta property="og:description" content="{{emenda}}">
+<meta property="og:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="300">
+<meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="twitter:image" content="{{ protocol }}{{ site_url }}{% static 'img/share-wikilegis.jpg' %}">
+{% endblock metatags %}
+
+{% block content %}
+
+<main id="emenda" class="document-body js-documentBody">
+
+    <header class="js-documentHeader">
+        <div class="info">
+          <div class="group">
+            <span><a href="{{emenda.pl.arquivo.url}}">{{emenda.pl.tipo}} {{emenda.pl.numero}}/{{emenda.pl.ano}}</a></span> (faltam <span>{{count}}</span> emendas)
+          </div>
+          <p>Emenda {{emenda.numero}}/{{emenda.ano}}</p>
+          <p class="description">{{ emenda.ementa }}</p>
+        </div>
+        <hr>
+        <div class="form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn" type="submit" value="Enviar">
+                </form>
+              </div>
+      </header>
+    <div class="" style="width:100%">
+    
+    <div class="" style="width:100%;float:right;">
+        <iframe src = "https://view.officeapps.live.com/op/embed.aspx?src={{emenda.link}}" width='100%' height='800' allowfullscreen webkitallowfullscreen></iframe>
+    </div>
+    
+    <div style="width:25%;float:right;">
+    
+    </div>
+    </div>
+</main>
+
+{% endblock content %}
+
+{% block page_js %}
+{% endblock page_js %}
