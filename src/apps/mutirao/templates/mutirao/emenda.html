@@ -47,13 +47,21 @@
           <div class="small">{{emenda.autor}}</div>
           <p class="description">{{ emenda.ementa }}</p>
         </div>
+        
+        {% if user.is_authenticated %}
         <div class="form">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input class="btn" type="submit" value="Enviar">
-                </form>
-              </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn" type="submit" value="Enviar">
+            </form>
+        </div>
+        {% else %}
+            <p>
+                <center><a class="app-button -green" href="/accounts/login/?next={{request.path}}">Faça login para começar a avaliar.</a></center>
+            </p>
+        {% endif %}
+
       </header>
     <div class="" style="width:100%">
     

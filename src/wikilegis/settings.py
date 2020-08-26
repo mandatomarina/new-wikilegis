@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'celery',
     'django_celery_beat',
     'django_celery_results',
-
+    'apps.mutirao',
     'apps.accounts',
     'apps.participations',
     'apps.projects',

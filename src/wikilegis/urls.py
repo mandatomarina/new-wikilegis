@@ -18,6 +18,7 @@ urlpatterns = [
     path('listarProposicoes/', views.list_propositions),
     path('listarProposicoes/<int:cd_id>', views.proposition_detail),
     path('sugestoes/', include('apps.sugestoes.urls')),
+    path('mutirao/', include('apps.mutirao.urls')),
     url(r'^accounts/', include('allauth.urls')),
 
 ]
