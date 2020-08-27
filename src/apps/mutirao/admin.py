@@ -19,7 +19,12 @@ class ReviewResource(resources.ModelResource):
     class Meta:
         model = models.Review
 
+
 class ReviewAdmin(ImportExportModelAdmin):
+    list_display = ('projeto', 'emenda', 'apoiar', 'owner')
+    def projeto(self, obj):
+        return obj.emenda.pl 
+
     resource_class = ReviewResource
 
 admin.site.register(models.Review, ReviewAdmin)
