@@ -18,3 +18,8 @@
 .small {
     font-size: 0.8em;
 }
+
+.small a {
+    text-decoration: underline !important;
+    color: #9d2153 !important;
+}

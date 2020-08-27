@@ -5,14 +5,26 @@ from .forms import MutiraoForm
 from django.db.models import Count
 
 
+class EmendaListView(View):
+    def get(self, request, *args, **kwargs):
+        emenda = Emenda.objects.filter(pl__tipo=self.kwargs['tipo'],pl__numero=self.kwargs['numero'],pl__ano=self.kwargs['ano']).annotate(r_count=Count('review'))
+        emenda_revisada = emenda.filter(r_count__gte=1)
+        context = {
+            'emendas' : emenda,
+            'emendas_total' : len(emenda),
+            'emendas_analisadas' : len(emenda_revisada)
+        }
+        return render(request, 'mutirao/lista.html', context)
+
+
 class MutiraoRnd(View):
     def get(self, request, *args, **kwargs):
         emenda = Emenda.objects.filter(pl__tipo=self.kwargs['tipo'],pl__numero=self.kwargs['numero'],pl__ano=self.kwargs['ano']).annotate(r_count=Count('review'))
         e= emenda.filter(r_count__lte=2).order_by('?').first()
-        return redirect('mutirao', tipo=self.kwargs['tipo'], ano=self.kwargs['ano'], numero=self.kwargs['numero'], ano_emenda=e.ano, numero_emenda=e.numero)
+        return redirect('emenda', tipo=self.kwargs['tipo'], ano=self.kwargs['ano'], numero=self.kwargs['numero'], ano_emenda=e.ano, numero_emenda=e.numero)
 
 
-class MutiraoView(View):
+class EmendaView(View):
     def post(self, request, *args, **kwargs):
 
         form = MutiraoForm(request.POST)

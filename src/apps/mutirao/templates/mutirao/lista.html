@@ -37,25 +37,18 @@
     <header class="js-documentHeader">
         <div class="info">
           <div class="group">
-            <p>{{emenda.pl.tipo}} {{emenda.pl.numero}}/{{emenda.pl.ano}} <a href="{{emenda.pl.arquivo.url}}">⬇</a></p>
-            <div class="small">{{emendas_total}} emendas protocoladas. (<a href="{% url 'lista' tipo=emenda.pl.tipo numero=emenda.pl.numero ano=emenda.pl.ano %}">lista</a>)</div>
+            <p>{{emendas.0.pl.tipo}} {{emendas.0.pl.numero}}/{{emendas.0.pl.ano}} <a href="{{emenda.0.pl.arquivo.url}}">⬇</a></p>
+            <div class="small">{{emendas_total}} emendas protocoladas.</div>
             <div class="small">{{emendas_analisadas}} emendas já analisadas.</div>
             <hr>
 
           </div>
-          <p>Emenda {{emenda.numero}}/{{emenda.ano}} <a href="{{emenda.link}}">⬇</a></p>
-          <div class="small">{{emenda.autor}}</div>
-          <p class="description">{{ emenda.ementa }}</p>
-        </div>
+          </div>
         
         {% if user.is_authenticated %}
-        <div class="form">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input class="btn" type="submit" value="Enviar">
-            </form>
-        </div>
+          <p>
+            <center><a class="app-button -green" href="{% url 'mutirao_rnd' tipo=emendas.0.pl.tipo numero=emendas.0.pl.numero ano=emendas.0.pl.ano %}">Emenda aleatória.</a></center>
+        </p>
         {% else %}
             <p>
                 <center><a class="app-button -green" href="/accounts/login/?next={{request.path}}">Faça login para começar a avaliar.</a></center>
@@ -66,7 +59,16 @@
     <div class="" style="width:100%">
     
     <div class="" style="width:100%;float:right;">
-        <iframe src = "https://view.officeapps.live.com/op/embed.aspx?src={{emenda.link}}" width='100%' height='800' allowfullscreen webkitallowfullscreen></iframe>
+      <h1>Lista de Emendas do {{emendas.0.pl.tipo}} {{emendas.0.pl.numero}}/{{emendas.0.pl.ano}}</h1>
+       <ul>
+         {% for e in emendas %}
+         <li><p><a href="{% url 'emenda' tipo=e.pl.tipo numero=e.pl.numero ano=e.pl.ano numero_emenda=e.numero ano_emenda=e.ano %}">{{e.numero}}/{{e.ano}}</a>: {{e.ementa}}
+          <br>
+        <span class="small">({{e.autor}})</span>
+      </p>
+        </li>
+         {% endfor %}
+       </ul>
     </div>
     
     <div style="width:25%;float:right;">
