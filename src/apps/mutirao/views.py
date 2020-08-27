@@ -20,7 +20,7 @@ class MutiraoView(View):
     def get(self, request, *args, **kwargs):
         emenda = Emenda.objects.filter(pl__tipo=self.kwargs['tipo'],pl__numero=self.kwargs['numero'],pl__ano=self.kwargs['ano']).annotate(r_count=Count('review'))
         
-        emenda_revisar = emenda.filter(r_count__lt=2).order_by('r_count')
+        emenda_revisar = emenda.filter(r_count__lt=2).order_by('?')
         emenda_revisada = emenda.filter(r_count__gte=1)
         if not emenda_revisar:
             return render(request, 'mutirao/obrigado.html', { 'tipo' : self.kwargs['tipo'], 'numero' : self.kwargs['numero'], 'ano' : self.kwargs['ano']})
