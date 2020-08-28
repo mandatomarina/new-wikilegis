@@ -32,7 +32,7 @@ class EmendaView(View):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.owner = request.user
-            obj.emenda = Emenda.objects.get(pk=form.cleaned_data['emenda_id'])
+            obj.emenda = Emenda.objects.get(ano=self.kwargs['ano_emenda'], numero=self.kwargs['numero_emenda'])
             obj.save()
             return redirect('mutirao_rnd', tipo=self.kwargs['tipo'], ano=self.kwargs['ano'], numero=self.kwargs['numero'])
 
@@ -45,7 +45,7 @@ class EmendaView(View):
         if not emenda_revisar:
             return render(request, 'mutirao/obrigado.html', { 'tipo' : self.kwargs['tipo'], 'numero' : self.kwargs['numero'], 'ano' : self.kwargs['ano']})
         
-        form = MutiraoForm({'emenda_id' : emenda_revisar.id, 'apoiar':False})
+        form = MutiraoForm({'apoiar':False})
         context = {
             'emenda' : emenda_revisar,
             'form' : form,
