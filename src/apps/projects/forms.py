@@ -1,6 +1,6 @@
 from django import forms
 from apps.projects.models import Document, DocumentType
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class DocumentForm(forms.ModelForm):

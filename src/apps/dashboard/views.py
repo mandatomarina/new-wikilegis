@@ -3,7 +3,8 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
+
 from django.template.loader import render_to_string
 from utils.decorators import owner_required
 from constance import config

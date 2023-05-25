@@ -8,7 +8,7 @@ from apps.notifications.emails import (send_owner_invitation,
                                        send_owner_closed_participation,
                                        send_finish_participations)
 from apps.participations.models import InvitedGroup, OpinionVote
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from wikilegis import celery_app
 from celery.utils.log import get_task_logger
 from datetime import date, timedelta

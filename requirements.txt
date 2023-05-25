@@ -1,4 +1,4 @@
-Django
+Django==2.3.19
 python-decouple
 django_compressor
 django-npm
@@ -25,6 +25,9 @@ numpy
 scikit-learn
 scipy
 kneed
-sklearn
 beautifulsoup4
 django-allauth
+celery
+django-import_export
+django-celery-beat
+django-celery-results

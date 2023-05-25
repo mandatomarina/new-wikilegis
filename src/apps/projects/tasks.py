@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from apps.projects import models, camara_deputados
 from wikilegis import celery_app
 from celery.utils.log import get_task_logger

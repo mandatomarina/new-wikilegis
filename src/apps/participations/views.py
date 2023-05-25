@@ -1,7 +1,7 @@
 from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from utils.decorators import require_ajax
 from datetime import date, datetime
 from django.views.generic.edit import CreateView

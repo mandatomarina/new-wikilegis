@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 from decouple import config, Csv
-from django.utils.translation import ugettext_lazy as _
+#from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +27,7 @@ DEBUG = config('DEBUG', cast=bool, default=True)
 
 SECRET_KEY = config('SECRET_KEY', default='secret_key')
 
-SITE_ID = config('SITE_ID', default='1')
+SITE_ID = config('SITE_ID', default=1)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS',
                        cast=Csv(lambda x: x.strip().strip(',').strip()),

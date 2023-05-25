@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 from utils.model_mixins import TimestampedMixin
 from utils.choices import OPINION_VOTE_CHOICES, PARTICIPATION_GROUP_CHOICES

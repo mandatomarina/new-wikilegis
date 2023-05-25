@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.views.generic import RedirectView
 from django.shortcuts import get_object_or_404, reverse
 from utils.decorators import require_ajax
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.http import JsonResponse
 from datetime import datetime, date
 from django.views.generic import TemplateView
