@@ -3,6 +3,8 @@ from django import forms
 from utils.choices import GENDER_CHOICES, UF_CHOICES, PROFILE_TYPE_CHOICES
 
 import requests
+import json
+
 def send_user_data_to_wix(user):
     wix_url = "https://marinahelou.com.br/_functions-dev/contact"
     wix_headers = {
