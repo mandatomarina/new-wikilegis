@@ -33,6 +33,7 @@
 
     & > h1 {
       font-size: $font-size-base;
+      max-width: 52rem;
 
       @include bp-smallup {
         font-size: $font-size-hecto;
@@ -56,7 +57,11 @@
     }
 
     & > .app-button {
-      padding: 1rem 2rem;
+      padding: 0.5rem 0.5rem;
+      width:12rem;
+      font-weight: bold;
+      text-transform: none;
+      font-size:1rem;
 
       @include bp-smallup {
         width: 10rem;
@@ -79,7 +84,7 @@
     & > img {
       //width: 100%;
       //height: 100%;
-      max-height: 34rem;
+      max-height: 48rem;
 
       //object-fit: contain;
     }
